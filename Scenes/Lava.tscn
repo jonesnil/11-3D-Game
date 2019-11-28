@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0612245, 0.258503, 0.517007, 0.755102, 0.92517 )
+colors = PoolColorArray( 0.558594, 0.0785522, 0, 1, 0.589844, 0.116032, 0.0230408, 1, 0.570313, 0.325918, 0.0401001, 1, 0.837674, 0.538979, 0.00891114, 1, 0.914063, 0.599854, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0.294118, 0.0156863, 1 )
+albedo_texture = SubResource( 2 )
+
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
+size = Vector2( 2000, 2000 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( 1000, 0, 1000, -1000, 0, 1000, 1000, 0, -1000, -1000, 0, 1000, -1000, 0, -1000, 1000, 0, -1000 )
+
+[node name="Ground" type="StaticBody" groups=[
+"Lava",
+]]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0944796, 0.0631865, 0.0122795 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 5 )
